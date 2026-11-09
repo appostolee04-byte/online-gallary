@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaddrack Admin Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="login-container">
+        <div class="login-card">
+
+            <div class="logo">S</div>
+
+            <h1>Shaddrack Admin</h1>
+            <p class="subtitle">Secure Gallery Administration</p>
+
+            <form id="loginForm">
+                <label for="email">Email address</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your admin email"
+                    autocomplete="username"
+                    required
+                >
+
+                <label for="password">Password</label>
+
+                <div class="password-wrapper">
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        id="togglePassword"
+                        class="show-password"
+                    >Show</button>
+                </div>
+
+                <button type="button" id="forgotPassword" class="forgot-link">
+                    Forgot password?
+                </button>
+
+                <button type="submit" id="loginButton" class="login-button">
+                    Sign In
+                </button>
+
+                <p id="loginMessage" class="message"></p>
+            </form>
+
+            <form id="resetForm" class="hidden">
+                <h2>Reset your password</h2>
+                <p class="subtitle">Choose a new administrator password.</p>
+
+                <label for="newPassword">New password</label>
+                <input
+                    type="password"
+                    id="newPassword"
+                    placeholder="Enter your new password"
+                    minlength="8"
+                    required
+                >
+
+                <button type="submit" class="login-button">
+                    Update Password
+                </button>
+
+                <p id="resetMessage" class="message"></p>
+            </form>
+
+            <p class="security-note">
+                <span>🔒</span> Authorized administrators only
+            </p>
+
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
