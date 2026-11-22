@@ -1,0 +1,485 @@
+
+/* ==========================================
+   SHADDRACK GALLERY - HELICOPTER LOGIN
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #050816;
+    color: #fff;
+    font-family: "Segoe UI", Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* BACKGROUND */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -2;
+    background:
+        radial-gradient(ellipse at top, #142044 0%, #080d20 45%, #03050d 100%);
+}
+
+.glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: .35;
+    animation: glowMove 9s ease-in-out infinite alternate;
+}
+
+.glow-one {
+    background: #00d9ff;
+    top: -130px;
+    left: -100px;
+}
+
+.glow-two {
+    background: #8b35ff;
+    right: -100px;
+    top: 25%;
+    animation-delay: 2s;
+}
+
+.glow-three {
+    background: #0066ff;
+    bottom: -180px;
+    left: 35%;
+    animation-delay: 4s;
+}
+
+@keyframes glowMove {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(60px, 50px) scale(1.2); }
+}
+
+/* PARTICLES */
+
+#particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #00eaff;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #00eaff;
+    animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+    from {
+        transform: translateY(105vh);
+        opacity: 0;
+    }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+
+/* FLIGHT SCENE */
+
+.flight-scene {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 16px 45px;
+    position: relative;
+    animation: flightArrival 2.5s ease-out both;
+}
+
+@keyframes flightArrival {
+    from {
+        transform: translateX(110vw);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* HELICOPTER */
+
+.helicopter-area {
+    z-index: 3;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.helicopter {
+    font-size: 76px;
+    line-height: 1;
+    filter: drop-shadow(0 0 14px #00eaff);
+    animation: helicopterHover 3s ease-in-out infinite;
+}
+
+.helicopter-label {
+    color: #00eaff;
+    font-size: 9px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    margin-top: 8px;
+    text-shadow: 0 0 10px #00eaff;
+}
+
+@keyframes helicopterHover {
+    0%, 100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+    50% {
+        transform: translateY(-9px) rotate(1deg);
+    }
+}
+
+/* ROPE */
+
+.banner-rope {
+    height: 45px;
+    width: 3px;
+    flex-shrink: 0;
+    background: linear-gradient(to bottom, #00eaff, #ffffff, #00eaff);
+    box-shadow: 0 0 12px #00eaff;
+    transform-origin: top center;
+    animation: ropeSwing 3s ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes ropeSwing {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+}
+
+/* LOGIN BANNER */
+
+.main-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.login-card {
+    width: min(100%, 440px);
+    padding: 32px 30px 22px;
+    position: relative;
+    border: 1px solid rgba(0, 234, 255, .65);
+    border-radius: 22px;
+    background: rgba(9, 17, 39, .86);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow:
+        0 0 18px rgba(0, 234, 255, .22),
+        0 0 45px rgba(0, 234, 255, .10),
+        inset 0 0 25px rgba(0, 234, 255, .035);
+    transform-origin: top center;
+    animation: bannerSwing 4s ease-in-out infinite;
+}
+
+@keyframes bannerSwing {
+    0%, 100% { transform: rotate(-.6deg); }
+    50% { transform: rotate(.6deg); }
+}
+
+/* LOGO */
+
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-icon {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    color: #00eaff;
+    font-size: 28px;
+    border: 1px solid rgba(0, 234, 255, .6);
+    background: rgba(0, 234, 255, .09);
+    box-shadow: 0 0 20px rgba(0, 234, 255, .2);
+}
+
+.logo h1 {
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.highlight {
+    color: #00eaff;
+    text-shadow: 0 0 12px rgba(0, 234, 255, .6);
+}
+
+.logo p {
+    color: #9ba9c9;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* SECTION TRANSITIONS */
+
+.form-section {
+    display: none;
+    animation: sectionAppear .4s ease;
+}
+
+.form-section.active {
+    display: block;
+}
+
+@keyframes sectionAppear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-text {
+    margin-bottom: 25px;
+}
+
+.welcome-text h2 {
+    font-size: 25px;
+    margin: 0 0 7px;
+}
+
+.welcome-text p {
+    color: #9ba9c9;
+    font-size: 13px;
+    margin: 0;
+}
+
+/* INPUTS */
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 9px;
+    color: #c8d5ee;
+    font-size: 13px;
+}
+
+.input-wrapper {
+    height: 52px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 15px;
+    border: 1px solid rgba(130, 160, 200, .25);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .045);
+    transition: .3s;
+}
+
+.input-wrapper:focus-within {
+    border-color: #00eaff;
+    box-shadow: 0 0 14px rgba(0, 234, 255, .18);
+}
+
+.input-wrapper > i {
+    color: #00eaff;
+    font-size: 15px;
+}
+
+.input-wrapper input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 14px;
+}
+
+.input-wrapper input::placeholder {
+    color: #71809e;
+}
+
+.password-toggle {
+    border: 0;
+    background: transparent;
+    color: #9ba9c9;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 8px;
+}
+
+.password-toggle:hover {
+    color: #00eaff;
+}
+
+/* FORGOT PASSWORD */
+
+.forgot-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -8px;
+    margin-bottom: 22px;
+}
+
+.forgot-row button,
+.back-button {
+    border: 0;
+    background: transparent;
+    color: #00eaff;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.forgot-row button:hover,
+.back-button:hover {
+    text-decoration: underline;
+}
+
+/* LOGIN BUTTON */
+
+.login-button {
+    width: 100%;
+    min-height: 52px;
+    border: 0;
+    border-radius: 10px;
+    background: linear-gradient(100deg, #007cf0, #00d9ff);
+    color: #03101d;
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 13px;
+    box-shadow: 0 0 20px rgba(0, 217, 255, .22);
+    transition: .3s;
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 28px rgba(0, 217, 255, .45);
+}
+
+.login-button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* MESSAGES */
+
+.message {
+    min-height: 18px;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 13px 0 0;
+    text-align: center;
+}
+
+.message.success {
+    color: #4dffb5;
+}
+
+.message.error {
+    color: #ff7777;
+}
+
+/* BACK BUTTON */
+
+.back-button {
+    display: block;
+    margin: 18px auto 0;
+}
+
+/* FOOTER */
+
+.card-footer {
+    margin-top: 25px;
+    padding-top: 17px;
+    border-top: 1px solid rgba(255, 255, 255, .09);
+    text-align: center;
+    color: #8999b7;
+    font-size: 11px;
+}
+
+.card-footer i {
+    color: #00eaff;
+    margin-right: 6px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 600px) {
+    .flight-scene {
+        padding: 22px 12px 35px;
+    }
+
+    .helicopter {
+        font-size: 62px;
+    }
+
+    .helicopter-area {
+        height: 85px;
+    }
+
+    .banner-rope {
+        height: 30px;
+    }
+
+    .login-card {
+        width: 100%;
+        padding: 27px 20px 20px;
+    }
+
+    .logo h1 {
+        font-size: 19px;
+    }
+
+    .welcome-text h2 {
+        font-size: 22px;
+    }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
